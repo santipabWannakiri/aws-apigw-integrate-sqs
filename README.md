@@ -7,3 +7,9 @@ aws-apigw-integrate-sqs
 
 
 [AWS SQS (Standard VS FIFO)](https://www.youtube.com/watch?v=DQLtW9_9HpA)
+
+ ```
+#set($dedupId = $context.requestId)
+#set($groupId = $input.json('$.data.jobNumber'))
+Action=SendMessage&MessageBody=$input.body&MessageGroupId=$groupId&MessageDeduplicationId=$dedupId
+```
